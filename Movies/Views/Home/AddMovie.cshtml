@@ -11,8 +11,15 @@
 <form method="post">
     <label asp-for="Title">Title:</label>
     <input type="text" id="title" asp-for="Title" /><br />
-    <label asp-for="Category">Category:</label>
-    <input type="text" id="Category" asp-for="Category" /><br />
+    <label asp-for="CategoryId">Category:</label>
+    <select id="Category" asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>    
+    <br />
     <label asp-for="Year">Year:</label>
     <input type="number" id="Year" asp-for="Year" /><br />
     <label asp-for="Director">Director(s):</label>
@@ -34,7 +41,7 @@
     <label asp-for="Notes">Notes:</label>
     <input type="text" id="Notes" asp-for="Notes" /><br />
 
-    <button type="submit">Add Movie</button>
+    <button type="submit">Save</button>
 
     <div asp-validation-summary="All"></div>
 </form>
